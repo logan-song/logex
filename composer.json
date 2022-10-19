@@ -1,5 +1,5 @@
 {
-    "name": "dunkul/logex",
+    "name": "logan-song/logex",
     "description": "laravel log helper",
     "keywords": [
         "request",
@@ -8,13 +8,17 @@
     "type": "library",
     "require": {
         "php": "^7.4|^8.1",
-        "laravel/framework": "^8.0"
+        "laravel/framework": "^8.0|^9.0"
     },
     "license": "MIT",
     "authors": [
         {
             "name": "dunkul",
             "email": "dunkul@naver.com"
+        },
+        {
+            "name": "logan-song",
+            "email": "jongno@kakao.com"
         }
     ],
     "autoload": {
