@@ -5,7 +5,7 @@
 ### Installation
 
 ```bash
-composer require dunkul/logex
+composer require logan-song/logex
 ```
 ### License
 MIT
