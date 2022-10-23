@@ -1,6 +1,6 @@
 <?php
 
-namespace Dunkul\LogEx;
+namespace LoganSong\LogEx;
 
 use Monolog\Formatter\LineFormatter;
 use Monolog\Logger;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dunkul\LogEx;
+namespace LoganSong\LogEx;
 
 use Illuminate\Support\Facades\Facade;
 

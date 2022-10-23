@@ -23,16 +23,16 @@
     ],
     "autoload": {
         "psr-4": {
-            "Dunkul\\LogEx\\": "src/"
+            "LoganSong\\LogEx\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-               "Dunkul\\LogEx\\LogExServiceProvider"
+               "LoganSong\\LogEx\\LogExServiceProvider"
             ],
             "aliases": {
-                "LogEx": "Dunkul\\LogEx\\LogEx"
+                "LogEx": "LoganSong\\LogEx\\LogEx"
             },
             "dont-discover": []
         }
