@@ -4,7 +4,6 @@ namespace LoganSong\LogEx;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
-use Dunkul\LogEx\LogExClass;
 
 class LogExServiceProvider extends ServiceProvider
 {
