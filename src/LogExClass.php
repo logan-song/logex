@@ -2,6 +2,8 @@
 
 namespace LoganSong\LogEx;
 
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
@@ -27,7 +29,7 @@ class LogExClass
 
   protected function writeLog(string $_channel, string $_level, string $_message, array $_context = [])
   {
-    $formatter = new LineFormatter("[%datetime%] %level_name%: %message%\n", 'H:i:s', false, true);
+    $formatter = new LineFormatter("[%datetime%] %level_name%: %message%\n", 'H:i:s', true, true);
 
     if (Str::lower($_level) === 'query') {
       $path = sprintf('logs/%s/query.log', now()->format('Y-m-d'));
@@ -45,15 +47,23 @@ class LogExClass
     $orderLog->{$_level}($_message, $_context);
   }
 
+  protected function formatMessage($message)
+  {
+    if (is_array($message)) {
+      return var_export($message, true);
+    } elseif ($message instanceof Jsonable) {
+      return $message->toJson();
+    } elseif ($message instanceof Arrayable) {
+      return var_export($message->toArray(), true);
+    }
+
+    return (string) $message;
+  }
+
   public function __call(string $_level, array $_params)
   {
     if (in_array($_level, array_keys($this->levels)) && count($_params) > 1) {
-
-      if (is_array($_params[1])) {
-        $_params[1] = json_encode($_params[1], JSON_UNESCAPED_UNICODE);
-      }
-
-      $this->writeLog($_params[0], $_level, $_params[1]);
+      $this->writeLog($_params[0], $_level, $this->formatMessage($_params[1]));
     }
   }
 }
